@@ -24,12 +24,16 @@ export class LogController {
 
   read = async (req: Request, res: Response) => {
     const userId = req.query.userId as string | null;
+    const page = parseInt(req.query.page as string) || 1;
+    const limit = parseInt(req.query.limit as string) || 10;
 
     const useCase = new RetrieveLogs(new MongoLogRepository());
 
-    const logs = await useCase.execute(userId);
+    const logs = await useCase.execute(userId, page, limit);
     res.status(200).json({
-      count: logs.length,
+      status: 'success',
+      results: logs.length,
+      page: page,
       data: logs,
     });
   };

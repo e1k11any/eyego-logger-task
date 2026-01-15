@@ -12,10 +12,12 @@ export class MongoLogRepository implements ILogRepository {
     });
   }
 
-  async find(filters: any): Promise<LogEntry[]> {
+  async find(filters: any, page: number, limit: number): Promise<LogEntry[]> {
+    const skip = (page - 1) * limit;
     const logsDocuments = await LogModel.find(filters)
-      .limit(50)
       .sort({ timestamp: -1 })
+      .skip(skip)
+      .limit(limit)
       .exec();
 
     return logsDocuments.map(

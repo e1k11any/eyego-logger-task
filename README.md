@@ -278,15 +278,32 @@ GET /api/v1/logs?userId=user-123
 ```json
 {
   "status": "success",
-  "results": 1,
+  "results": 3,
+  "page": 1,
   "data": [
     {
-      "userId": "user-123",
-      "action": "CLICK_BUTTON",
-      "timestamp": "2026-01-14T21:00:00.000Z",
+      "id": "69682d8d81847b87ab93264b",
+      "userId": "eyego",
+      "action": "ADD_TO_CART",
+      "timestamp": "2026-01-14T23:58:05.442Z",
+      "metadata": {}
+    },
+    {
+      "id": "69681310771a3496d662c67a",
+      "userId": "ibrahim-6",
+      "action": "CLICK",
+      "timestamp": "2026-01-14T22:05:04.463Z",
       "metadata": {
-        "page": "home",
-        "browser": "chrome"
+        "page": "home"
+      }
+    },
+    {
+      "id": "69680a55e845f8beb448e8cc",
+      "userId": "ibrahim-2",
+      "action": "CLICK",
+      "timestamp": "2026-01-14T21:27:49.079Z",
+      "metadata": {
+        "page": "home"
       }
     }
   ]
